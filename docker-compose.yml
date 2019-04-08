@@ -1,10 +1,7 @@
 version: "2"
 services:
   tf2:
-    build: 
-      context: ./containers/tf2
-      dockerfile: ./tf2.Dockerfile
-    command: tail -f /dev/null
+    image: team-brh/tf2:latest
     ports: 
       - 27015:27015/udp
     dns: 
