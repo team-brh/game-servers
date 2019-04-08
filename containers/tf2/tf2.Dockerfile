@@ -34,6 +34,12 @@ RUN curl -sL -o /tmp/heavyboxing.sp https://raw.githubusercontent.com/jesseryoun
     && $SOURCEMOD_DIR/scripting/spcomp /tmp/heavyboxing.sp \
     && rm /tmp/heavyboxing.sp
 
+# Copy disabled plugins
+RUN mv $SOURCEMOD_DIR/plugins/disabled/mapchooser.smx $SOURCEMOD_DIR/plugins/ \
+    && mv $SOURCEMOD_DIR/plugins/disabled/rockthevote.smx $SOURCEMOD_DIR/plugins/ \
+    && mv $SOURCEMOD_DIR/plugins/disabled/randomcycle.smx $SOURCEMOD_DIR/plugins/ \
+    && mv $SOURCEMOD_DIR/plugins/disabled/nominations.smx $SOURCEMOD_DIR/plugins/
+
 
 ENV STEAM_APP_ID 232250
 ADD server_entrypoint.sh /steam/
@@ -51,7 +57,10 @@ ADD config/mapcycle.txt $STEAM_GAME_DIR/tf/cfg/
 # Sourcemod configs
 ADD config/admin_groups.cfg $SOURCEMOD_DIR/configs/
 ADD config/admins_simple.ini $SOURCEMOD_DIR/configs/
+ADD config/maplists.cfg $SOURCEMOD_DIR/configs/
 ADD config/sourcemod.cfg $STEAM_GAME_DIR/tf/cfg/sourcemod/
+ADD config/mapchooser.cfg $STEAM_GAME_DIR/tf/cfg/sourcemod/
+
 
 
 
