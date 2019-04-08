@@ -31,3 +31,7 @@ RUN cd /steam/ \
 ENV STEAM_GAME_DIR /steam/game
 ADD steam_entrypoint.sh /steam/
 ADD steam_app_update.txt /steam/
+
+USER root
+RUN chmod +x /steam/steam_entrypoint.sh
+USER steam

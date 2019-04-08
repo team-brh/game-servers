@@ -37,6 +37,10 @@ RUN curl -sL -o /tmp/heavyboxing.sp https://raw.githubusercontent.com/jesseryoun
 
 ENV STEAM_APP_ID 232250
 ADD server_entrypoint.sh /steam/
+USER root
+RUN chmod +x /steam/server_entrypoint.sh
+USER steam
+
 
 # General game configs
 ADD config/motd.txt $STEAM_GAME_DIR/tf/cfg/
