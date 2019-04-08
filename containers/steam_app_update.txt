@@ -1,0 +1,6 @@
+@ShutdownOnFailedCommand 1
+@NoPromptForPassword 1
+login anonymous
+force_install_dir $STEAM_GAME_DIR
+app_update $STEAM_APP_ID
+quit

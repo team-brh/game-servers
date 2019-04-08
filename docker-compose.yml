@@ -1,0 +1,42 @@
+version: "2"
+services:
+  tf2:
+    build: 
+      context: ./containers/tf2
+      dockerfile: ./tf2.Dockerfile
+    command: tail -f /dev/null
+    ports: 
+      - 27015:27015/udp
+    dns: 
+      - 172.28.0.2
+    networks: 
+      - game-network
+
+
+  cache:
+    image: steamcache/monolithic
+    volumes:
+      - cache:/data/cache/
+    networks: 
+      game-network:
+        ipv4_address: 172.28.0.1
+        
+  dns:
+    image: steamcache/steamcache-dns
+    environment:
+      - USE_GENERIC_CACHE=true 
+      - LANCACHE_IP=172.28.0.1
+    networks: 
+      game-network:
+        ipv4_address: 172.28.0.2
+
+
+volumes: 
+  cache:
+
+networks:
+  game-network:
+    ipam:
+      config:
+      - subnet: 172.28.0.0/16
+        ip_range: 172.28.5.0/24
