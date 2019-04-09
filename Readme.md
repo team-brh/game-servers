@@ -1,4 +1,4 @@
-Team-BRH - Open Source Game Servers Hosting
+Team-BRH - Open Source Game Server Hosting
 ===========================================
 This repository is used to build the games servers hosted by the Bar Room Heroes community.
 
