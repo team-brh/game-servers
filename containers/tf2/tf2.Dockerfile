@@ -4,20 +4,20 @@ FROM team-brh/game-server-base:latest
 RUN mkdir -p $STEAM_GAME_DIR/tf/ \
     && cd $STEAM_GAME_DIR/tf/ \
     && curl -sL "https://www.sourcemm.net/latest.php?os=linux&version=1.10" | tar -xz \
-    && curl -sL "http://sourcemod.net/latest.php?os=linux&version=1.9" | tar -xz
+    && curl -sL "http://sourcemod.net/latest.php?os=linux&version=1.10" | tar -xz
 
 ENV SOURCEMOD_DIR $STEAM_GAME_DIR/tf/addons/sourcemod/
 
 # Load and build the dg plugin
-# RUN mkdir /tmp/plugin \
-#     && cd /tmp/plugin \
-#     && curl -sL "https://github.com/jesseryoung/drinkinggame/archive/master.tar.gz" | tar -xz --strip-components 1 \
-#     && mkdir -p $STEAM_GAME_DIR/tf/materials/dg/ \
-#     && cp *.vmt $STEAM_GAME_DIR/tf/materials/dg/ \
-#     && cp *.vtf $STEAM_GAME_DIR/tf/materials/dg/ \
-#     && cd $SOURCEMOD_DIR/plugins \
-#     && $SOURCEMOD_DIR/scripting/spcomp /tmp/plugin/src/dgplugin.sp \
-#     && rm -rf /tmp/plugin
+RUN mkdir /tmp/plugin \
+    && cd /tmp/plugin \
+    && curl -sL "https://github.com/jesseryoung/drinkinggame/archive/master.tar.gz" | tar -xz --strip-components 1 \
+    && mkdir -p $STEAM_GAME_DIR/tf/materials/dg/ \
+    && cp *.vmt $STEAM_GAME_DIR/tf/materials/dg/ \
+    && cp *.vtf $STEAM_GAME_DIR/tf/materials/dg/ \
+    # && cd $SOURCEMOD_DIR/plugins \
+    # && $SOURCEMOD_DIR/scripting/spcomp /tmp/plugin/src/dgplugin.sp \
+    && rm -rf /tmp/plugin
 
 # Overspray plugin
 RUN curl -sL -o /tmp/overspray.sp https://raw.githubusercontent.com/team-brh/overspray/master/overspray.sp \
