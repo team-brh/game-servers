@@ -68,6 +68,6 @@ pl_snowycoast
 
 // ##### Custom maps - Workshop only! ######
 // Entries follow the pattern "workshop/map_name.ugc<file id>"
-// Find the file name in the URL for the map on the workshop
+// Find the file id in the URL for the map on the workshop
 
 workshop/koth_rooftop_reborn.ugc1702600592
