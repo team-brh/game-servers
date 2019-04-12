@@ -1,17 +1,8 @@
-FROM team-brh/game-server-base:latest
+FROM team-brh/hl2:latest
 
-# Copy down Metamod/Sourcemod
-RUN mkdir -p $STEAM_GAME_DIR/tf/ \
-    && cd $STEAM_GAME_DIR/tf/ \
-    && curl -sL "https://mms.alliedmods.net/mmsdrop/1.10/mmsource-1.10.7-git970-linux.tar.gz" | tar -xz \
-    && curl -sL "https://sm.alliedmods.net/smdrop/1.10/sourcemod-1.10.0-git6394-linux.tar.gz" | tar -xz 
-
-# Grab accelerator (crash dump analyzer)
-RUN curl -sL -o /tmp/accelerator.zip https://builds.limetech.io/files/accelerator-2.4.3-git127-b302f00-linux.zip  \
-    && unzip -qq /tmp/accelerator.zip -d $STEAM_GAME_DIR/tf/ \
-    && rm /tmp/accelerator.zip
-
-ENV SOURCEMOD_DIR $STEAM_GAME_DIR/tf/addons/sourcemod/
+# Link sourcmod directory
+# RUN mkdir -p $STEAM_GAME_DIR/tf/ \
+#     && ln -s /steam/addons $STEAM_GAME_DIR/tf/addons
 
 # Load and build the dg plugin
 RUN mkdir /tmp/plugin \
@@ -44,14 +35,9 @@ RUN mkdir /tmp/plugin \
     && rm -rf /tmp/plugin
 
 
-# Copy disabled plugins
-RUN mv $SOURCEMOD_DIR/plugins/disabled/mapchooser.smx $SOURCEMOD_DIR/plugins/ \
-    && mv $SOURCEMOD_DIR/plugins/disabled/rockthevote.smx $SOURCEMOD_DIR/plugins/ \
-    && mv $SOURCEMOD_DIR/plugins/disabled/randomcycle.smx $SOURCEMOD_DIR/plugins/ \
-    && mv $SOURCEMOD_DIR/plugins/disabled/nominations.smx $SOURCEMOD_DIR/plugins/
-
-
 ENV STEAM_APP_ID 232250
+
+# Server startup entrypoint
 ADD server_entrypoint.sh /steam/
 USER root
 RUN chmod +x /steam/server_entrypoint.sh
@@ -59,19 +45,15 @@ USER steam
 
 
 # General game configs
-ADD config/motd.txt $STEAM_GAME_DIR/tf/cfg/
-ADD config/pure_server_whitelist.txt $STEAM_GAME_DIR/tf/cfg/
-ADD config/server.cfg $STEAM_GAME_DIR/tf/cfg/
-ADD config/mapcycle.txt $STEAM_GAME_DIR/tf/cfg/
+ADD --chown=steam config/motd.txt $STEAM_GAME_DIR/tf/cfg/
+ADD --chown=steam config/pure_server_whitelist.txt $STEAM_GAME_DIR/tf/cfg/
+ADD --chown=steam config/server.cfg $STEAM_GAME_DIR/tf/cfg/
+ADD --chown=steam config/mapcycle.txt $STEAM_GAME_DIR/tf/cfg/
 
 # Sourcemod configs
-ADD config/admin_groups.cfg $SOURCEMOD_DIR/configs/
-ADD config/admins_simple.ini $SOURCEMOD_DIR/configs/
-ADD config/maplists.cfg $SOURCEMOD_DIR/configs/
-ADD config/core.cfg $SOURCEMOD_DIR/configs/
-ADD config/sourcemod.cfg $STEAM_GAME_DIR/tf/cfg/sourcemod/
-ADD config/mapchooser.cfg $STEAM_GAME_DIR/tf/cfg/sourcemod/
-
+ADD --chown=steam config/maplists.cfg $SOURCEMOD_DIR/configs/
+ADD --chown=steam config/mapchooser.cfg $STEAM_GAME_DIR/tf/cfg/sourcemod/
+ADD --chown=steam config/sourcemod.cfg $STEAM_GAME_DIR/tf/cfg/sourcemod/
 
 
 

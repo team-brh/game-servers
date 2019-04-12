@@ -11,6 +11,18 @@ services:
     depends_on: 
       - dns
       - cache
+  
+  css:
+    image: team-brh/css:latest
+    ports: 
+      - "27016:27015/udp"
+    dns: 
+      - 172.28.0.2
+    networks: 
+      - game-network
+    depends_on: 
+      - dns
+      - cache
 
   cache:
     image: steamcache/monolithic

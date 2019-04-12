@@ -3,7 +3,7 @@
 touch $STEAM_GAME_DIR/console.log
 
 $STEAM_GAME_DIR/srcds_run \
-    -game tf \
+    -game cstrike \
     -debug \
     -autoupdate \
     -steam_dir $STEAMCMD_DIR/ \
@@ -11,8 +11,9 @@ $STEAM_GAME_DIR/srcds_run \
     -consolelog $STEAM_GAME_DIR/console.log \
     +ip 0.0.0.0 \
     +sv_pure 1 \
-    +mapcyclefile mapcycle.txt \
-    +map koth_nucleus \
-    +maxplayers 32 &
+    +map de_dust \
+    +maxplayers 16 \
+    +fps_max 500 \
+    & 
 
 tail -F $STEAM_GAME_DIR/console.log
