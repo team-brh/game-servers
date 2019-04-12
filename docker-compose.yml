@@ -3,12 +3,14 @@ services:
   tf2:
     image: team-brh/tf2:latest
     ports: 
-      - 27015:27015/udp
+      - "27015:27015/udp"
     dns: 
       - 172.28.0.2
     networks: 
       - game-network
-
+    depends_on: 
+      - dns
+      - cache
 
   cache:
     image: steamcache/monolithic
@@ -17,6 +19,8 @@ services:
     networks: 
       game-network:
         ipv4_address: 172.28.0.1
+    depends_on: 
+      - dns
         
   dns:
     image: steamcache/steamcache-dns

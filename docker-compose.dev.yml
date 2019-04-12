@@ -1,0 +1,5 @@
+version: "2"
+services:
+  tf2:
+    security_opt:
+      - seccomp:unconfined

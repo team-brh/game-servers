@@ -1,0 +1,5 @@
+version: "2"
+services:
+  tf2:
+    ports:
+      - "69.162.82.210:27015:27015/udp"
