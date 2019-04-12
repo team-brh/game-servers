@@ -4,7 +4,12 @@ FROM team-brh/game-server-base:latest
 RUN mkdir -p $STEAM_GAME_DIR/tf/ \
     && cd $STEAM_GAME_DIR/tf/ \
     && curl -sL "https://www.sourcemm.net/latest.php?os=linux&version=1.10" | tar -xz \
-    && curl -sL "http://sourcemod.net/latest.php?os=linux&version=1.10" | tar -xz
+    && curl -sL "http://sourcemod.net/latest.php?os=linux&version=1.10" | tar -xz 
+
+# Grab accelerator (crash dump analyzer)
+RUN curl -sL -o /tmp/accelerator.zip https://builds.limetech.io/files/accelerator-2.4.3-git127-b302f00-linux.zip  \
+    && unzip -qq /tmp/accelerator.zip -d $STEAM_GAME_DIR/tf/ \
+    && rm /tmp/accelerator.zip
 
 ENV SOURCEMOD_DIR $STEAM_GAME_DIR/tf/addons/sourcemod/
 
@@ -15,8 +20,8 @@ RUN mkdir /tmp/plugin \
     && mkdir -p $STEAM_GAME_DIR/tf/materials/dg/ \
     && cp *.vmt $STEAM_GAME_DIR/tf/materials/dg/ \
     && cp *.vtf $STEAM_GAME_DIR/tf/materials/dg/ \
-    # && cd $SOURCEMOD_DIR/plugins \
-    # && $SOURCEMOD_DIR/scripting/spcomp /tmp/plugin/src/dgplugin.sp \
+    && cd $SOURCEMOD_DIR/plugins \
+    && $SOURCEMOD_DIR/scripting/spcomp /tmp/plugin/src/dgplugin.sp \
     && rm -rf /tmp/plugin
 
 # Overspray plugin
@@ -58,6 +63,7 @@ ADD config/mapcycle.txt $STEAM_GAME_DIR/tf/cfg/
 ADD config/admin_groups.cfg $SOURCEMOD_DIR/configs/
 ADD config/admins_simple.ini $SOURCEMOD_DIR/configs/
 ADD config/maplists.cfg $SOURCEMOD_DIR/configs/
+ADD config/core.cfg $SOURCEMOD_DIR/configs/
 ADD config/sourcemod.cfg $STEAM_GAME_DIR/tf/cfg/sourcemod/
 ADD config/mapchooser.cfg $STEAM_GAME_DIR/tf/cfg/sourcemod/
 

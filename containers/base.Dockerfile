@@ -12,6 +12,8 @@ RUN yum update -y -q \
     ncurses-libs.i686 \
     libcurl.i686 \
     gettext \
+    unzip \
+    gdb \
     && yum clean all
 
 # Stupid symbolic link because tf2 depends on libcurl-gnutls
