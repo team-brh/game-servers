@@ -1,8 +1,8 @@
 FROM team-brh/hl2:latest
 
 # Link sourcmod directory
-# RUN mkdir -p $STEAM_GAME_DIR/tf/ \
-#     && ln -s /steam/addons $STEAM_GAME_DIR/tf/addons
+RUN mkdir -p $STEAM_GAME_DIR/tf/ \
+    && ln -s /steam/addons $STEAM_GAME_DIR/tf/addons
 
 # Load and build the dg plugin
 RUN mkdir /tmp/plugin \
