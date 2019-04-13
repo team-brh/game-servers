@@ -11,7 +11,7 @@ RUN cd /steam/addons/ \
 
 # Grab accelerator (crash dump analyzer)
 RUN curl -sL -o /tmp/accelerator.zip https://builds.limetech.io/files/accelerator-2.4.3-git127-b302f00-linux.zip  \
-    && unzip -qq /tmp/accelerator.zip -d $SOURCEMOD_DIR \
+    && unzip -qq /tmp/accelerator.zip -d /steam/ \
     && rm /tmp/accelerator.zip
 
 
