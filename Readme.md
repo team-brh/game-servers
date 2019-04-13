@@ -21,7 +21,7 @@ Run `build_images.cmd` (Windows) or `build_images.sh` (Linux/Mac) to build all i
 
 Running
 ------------
-Issuing a simple `docker-compose up -d` will start the servers. It may take awhile to startup the first time you launch as Monolithic will need to cache server downloads. You can follow along while it loads via `docker-compose logs -f tf2`.
+Run `run_dev.cmd` (Windows) or `run_dev.sh` (Linux/Mac) to run the servers locally. It will take a bit for the servers to come up as they will need to download the latest versions of the game. After the first one Monolithic caches the downloads startup should be faster.
 
 After the server is up you should be able to connect via the console by typing `connect <network address>` in the console of the game.
 
@@ -29,6 +29,18 @@ After the server is up you should be able to connect via the console by typing `
 
 Components
 ==========
+docker-compose.yml
+---------------------
+Primary definition for all the services that run on the server.
+
+docker-compose.dev.yml
+----------------------
+Development overrides and ports for running the servers locally. This is also has some security features of docker disabled to make debugging easier. Running `run_dev.cmd` (`run_dev.sh`) uses this override.
+
+docker-compose.prod.yml
+-----------------------
+Production overrides for IP addresses and ports. This binds the services to the actual IP addresses on the Team-BRH game server. Running `run_prod.cmd` (`run_prod.sh`) uses this override.
+
 [steamcache/monolithic](https://github.com/steamcache/monolithic)
 ---------------------
 Monolithic is a docker container that provides game download caching for a downloads from many service providers such as Steam, Origin and Battle.net.
@@ -42,3 +54,7 @@ This is a DNS that will transparently take over requests for resources Monolithi
 tf2
 ------------
 This container hosts the TF2 game server for the community.
+
+css
+-------------
+This container hosts the Counter-Strike: Source game server for the community.
