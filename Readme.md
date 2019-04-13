@@ -3,7 +3,9 @@ Team-BRH - Open Source Game Server Hosting
 This repository is used to build the games servers hosted by the Bar Room Heroes community.
 
 As of the latest version the following servers are hosted using this repository:
-<a href="https://www.gametracker.com/server_info/69.162.82.210:27015/" target="_blank"><img src="https://cache.gametracker.com/server_info/69.162.82.210:27015/b_350_20_692108_381007_ffffff_000000.png" border="0" width="350" height="20" alt=""/></a>
+<a href="https://www.gametracker.com/server_info/69.162.82.213:27015/" target="_blank"><img src="https://cache.gametracker.com/server_info/69.162.82.213:27015/b_350_20_692108_381007_ffffff_000000.png" border="0" width="350" height="20" alt=""/></a>
+
+<a href="https://www.gametracker.com/server_info/69.162.82.211:27015/" target="_blank"><img src="https://cache.gametracker.com/server_info/69.162.82.211:27015/b_350_20_692108_381007_ffffff_000000.png" border="0" width="350" height="20" alt=""/></a>
 
 
 Using This Repository
