@@ -1,5 +1,8 @@
 version: "2"
 services:
   tf2:
-    security_opt:
-      - seccomp:unconfined
+    ports:
+      - "127.0.0.1:27015:27015/udp"
+  css:
+    ports:
+      - "127.0.0.1:27016:27015/udp"
