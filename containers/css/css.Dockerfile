@@ -27,6 +27,8 @@ RUN curl -sL -o /tmp/plugin.zip "https://forums.alliedmods.net/attachment.php?at
 
 # Extra Cash
 RUN curl -sL -o $SOURCEMOD_DIR/plugins/extra_cash.smx "http://www.sourcemod.net/vbcompiler.php?file_id=18836"
+# Quick Defuse
+RUN curl -sL -o $SOURCEMOD_DIR/plugins/QuickDefuse.smx "http://www.sourcemod.net/vbcompiler.php?file_id=19309"
 
 # General game configs
 ADD --chown=steam config/server.cfg $STEAM_GAME_DIR/cstrike/cfg/
