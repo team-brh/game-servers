@@ -51,7 +51,7 @@ RUN set -x \
 			echo '[/Script/Mordhau.MordhauGameSession]'; \
 			echo 'bIsLANServer=False'; \
 			echo 'MaxSlots={{SERVER_MAXPLAYERS}}'; \
-			echo 'ServerName=New Mordhau Server'; \
+			echo 'ServerName=Bar Room Heroes-Horde Mode'; \
 			echo 'ServerPassword={{SERVER_PW}}'; \
 			echo 'AdminPassword={{SERVER_ADMINPW}}'; \
 			echo 'Admins=0'; \
