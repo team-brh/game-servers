@@ -1,4 +1,4 @@
-FROM team-brh/game-server-base:latest
+FROM team-brh/game-server-base:centos
 
 RUN mkdir -p /steam/addons/
 

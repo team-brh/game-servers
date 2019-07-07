@@ -20,6 +20,18 @@ services:
       - dns
       - cache
 
+  pz:
+    image: team-brh/pz:latest
+    dns: 
+      - 172.28.0.2
+    networks: 
+      - game-network
+    depends_on: 
+      - dns
+      - cache
+    volumes:
+      - pz_db:/home/steam/Zomboid/db
+
   cache:
     image: steamcache/monolithic
     volumes:
@@ -42,6 +54,7 @@ services:
 
 volumes: 
   cache:
+  pz_db:
 
 networks:
   game-network:
