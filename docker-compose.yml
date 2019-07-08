@@ -31,6 +31,7 @@ services:
       - cache
     volumes:
       - pz_db:/home/steam/Zomboid/db
+      - pz_save:/home/steam/Zomboid/Saves
 
   cache:
     image: steamcache/monolithic
@@ -55,6 +56,7 @@ services:
 volumes: 
   cache:
   pz_db:
+  pz_save:
 
 networks:
   game-network:

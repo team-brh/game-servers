@@ -9,9 +9,11 @@ ADD servertest_SandboxVars.lua /home/steam/Zomboid/Server/
 ADD servertest_spawnpoints.lua /home/steam/Zomboid/Server/
 ADD servertest_spawnregions.lua /home/steam/Zomboid/Server/
 
+# Add save directories directory
 USER root
-# Add db directory
-RUN mkdir -p /home/steam/Zomboid/db && chown -R steam:steam /home/steam/Zomboid
+RUN mkdir -p /home/steam/Zomboid/db \
+    && mkdir -p /home/steam/Zomboid/Saves \
+    && chown -R steam:steam /home/steam/Zomboid
 USER steam
 
 # Server startup entrypoint
