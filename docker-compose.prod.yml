@@ -1,6 +1,8 @@
 version: "2"
 services:
   tf2:
+    environment: 
+      - IP_ADDRESS=69.162.82.213
     ports:
       - "69.162.82.213:27015:27015/udp"
   css:
