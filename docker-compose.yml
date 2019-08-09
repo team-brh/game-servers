@@ -2,7 +2,6 @@ version: "2"
 services:
   tf2:
     image: team-brh/tf2:latest
-    network_mode: host
     dns: 
       - 172.28.0.2
     networks: 
