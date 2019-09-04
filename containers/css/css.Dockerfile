@@ -29,6 +29,8 @@ RUN curl -sL -o /tmp/plugin.zip "https://forums.alliedmods.net/attachment.php?at
 RUN curl -sL -o $SOURCEMOD_DIR/plugins/extra_cash.smx "http://www.sourcemod.net/vbcompiler.php?file_id=18836"
 # Quick Defuse
 RUN curl -sL -o $SOURCEMOD_DIR/plugins/QuickDefuse.smx "http://www.sourcemod.net/vbcompiler.php?file_id=19309"
+# simpletk
+RUN curl -sL -o $SOURCEMOD_DIR/plugins/simpletk.smx "http://www.sourcemod.net/vbcompiler.php?file_id=86692"
 
 # General game configs
 ADD --chown=steam config/server.cfg $STEAM_GAME_DIR/cstrike/cfg/
@@ -39,6 +41,7 @@ ADD --chown=steam config/pure_server_whitelist.txt $STEAM_GAME_DIR/cstrike/cfg/
 ADD --chown=steam config/sourcemod.cfg $STEAM_GAME_DIR/cstrike/cfg/sourcemod/
 ADD --chown=steam config/knifefight.cfg $STEAM_GAME_DIR/cstrike/cfg/sourcemod/
 ADD --chown=steam config/weapon_restrict.cfg $STEAM_GAME_DIR/cstrike/cfg/sourcemod/
+ADD --chown=steam config/plugin.simpletk.cfg $STEAM_GAME_DIR/cstrike/cfg/sourcemod/
 
 
 ENTRYPOINT [ "/steam/steam_entrypoint.sh", "/steam/server_entrypoint.sh" ]
