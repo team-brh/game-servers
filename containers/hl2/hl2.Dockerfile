@@ -15,13 +15,27 @@ RUN curl -sL -o /tmp/accelerator.zip https://builds.limetech.io/files/accelerato
     && rm /tmp/accelerator.zip
 
 
-# Copy disabled plugins
+# Move disabled plugins
 RUN mv $SOURCEMOD_DIR/plugins/disabled/mapchooser.smx $SOURCEMOD_DIR/plugins/ \
     && mv $SOURCEMOD_DIR/plugins/disabled/rockthevote.smx $SOURCEMOD_DIR/plugins/ \
     && mv $SOURCEMOD_DIR/plugins/disabled/randomcycle.smx $SOURCEMOD_DIR/plugins/ \
     && mv $SOURCEMOD_DIR/plugins/disabled/nominations.smx $SOURCEMOD_DIR/plugins/
 
+# Add shared plugins
+# Spraytrace
+RUN curl -sL -o $SOURCEMOD_DIR/plugins/spraytrace.smx "http://www.sourcemod.net/vbcompiler.php?file_id=85506"
+
+# Overspray plugin
+RUN mkdir /tmp/plugin \
+    && cd /tmp/plugin \
+    && curl -sL "https://github.com/team-brh/overspray/archive/cc7eefb22b88ae7f70de3e31e2787b58c86a14ae.tar.gz" | tar -xz --strip-components 1 \
+    && cd $SOURCEMOD_DIR/plugins \
+    && $SOURCEMOD_DIR/scripting/spcomp /tmp/plugin/overspray.sp \
+    && rm -rf /tmp/plugin
+
 # Sourcemod configs
 ADD --chown=steam config/admin_groups.cfg $SOURCEMOD_DIR/configs/
 ADD --chown=steam config/admins_simple.ini $SOURCEMOD_DIR/configs/
 ADD --chown=steam config/core.cfg $SOURCEMOD_DIR/configs/
+ADD --chown=steam config/maplists.cfg $SOURCEMOD_DIR/configs/
+ADD --chown=steam config/mapchooser.cfg $STEAM_GAME_DIR/tf/cfg/sourcemod/

@@ -15,15 +15,6 @@ RUN mkdir -p $STEAM_GAME_DIR/tf/ \
 #     && $SOURCEMOD_DIR/scripting/spcomp /tmp/plugin/src/dgplugin.sp \
 #     && rm -rf /tmp/plugin
 
-# Overspray plugin
-RUN mkdir /tmp/plugin \
-    && cd /tmp/plugin \
-    && curl -sL "https://github.com/team-brh/overspray/archive/cc7eefb22b88ae7f70de3e31e2787b58c86a14ae.tar.gz" | tar -xz --strip-components 1 \
-    && cd $SOURCEMOD_DIR/plugins \
-    && $SOURCEMOD_DIR/scripting/spcomp /tmp/plugin/overspray.sp \
-    && rm -rf /tmp/plugin
-
-
 # Heavyboxing plugin
 RUN mkdir /tmp/plugin \
     && cd /tmp/plugin \
@@ -51,8 +42,6 @@ ADD --chown=steam config/server.cfg $STEAM_GAME_DIR/tf/cfg/
 ADD --chown=steam config/mapcycle.txt $STEAM_GAME_DIR/tf/cfg/
 
 # Sourcemod configs
-ADD --chown=steam config/maplists.cfg $SOURCEMOD_DIR/configs/
-ADD --chown=steam config/mapchooser.cfg $STEAM_GAME_DIR/tf/cfg/sourcemod/
 ADD --chown=steam config/sourcemod.cfg $STEAM_GAME_DIR/tf/cfg/sourcemod/
 
 
