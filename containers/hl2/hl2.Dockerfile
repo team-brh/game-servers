@@ -6,8 +6,8 @@ ENV SOURCEMOD_DIR /steam/addons/sourcemod
 
 # Copy down Metamod/Sourcemod
 RUN cd /steam/addons/ \
-    && curl -sL "https://mms.alliedmods.net/mmsdrop/1.10/mmsource-1.10.7-git970-linux.tar.gz" | tar -xz addons --strip-components 1 \
-    && curl -sL "https://sm.alliedmods.net/smdrop/1.10/sourcemod-1.10.0-git6403-linux.tar.gz" | tar -xz addons --strip-components 1
+    && curl -sL "https://mms.alliedmods.net/mmsdrop/1.10/mmsource-1.10.7-git971-linux.tar.gz" | tar -xz addons --strip-components 1 \
+    && curl -sL "https://sm.alliedmods.net/smdrop/1.10/sourcemod-1.10.0-git6439-linux.tar.gz" | tar -xz addons --strip-components 1
 
 # Grab accelerator (crash dump analyzer)
 RUN curl -sL -o /tmp/accelerator.zip https://builds.limetech.io/files/accelerator-2.4.3-git127-b302f00-linux.zip  \
