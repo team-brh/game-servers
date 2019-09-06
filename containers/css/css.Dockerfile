@@ -31,6 +31,9 @@ RUN curl -sL -o $SOURCEMOD_DIR/plugins/extra_cash.smx "http://www.sourcemod.net/
 RUN curl -sL -o $SOURCEMOD_DIR/plugins/QuickDefuse.smx "http://www.sourcemod.net/vbcompiler.php?file_id=19309"
 # simpletk
 RUN curl -sL -o $SOURCEMOD_DIR/plugins/simpletk.smx "http://www.sourcemod.net/vbcompiler.php?file_id=86692"
+RUN curl -sL -o $SOURCEMOD_DIR/translations/simpletk.phrases.txt "https://forums.alliedmods.net/attachment.php?attachmentid=86654&d=1306426815"
+
+
 
 # General game configs
 ADD --chown=steam config/server.cfg $STEAM_GAME_DIR/cstrike/cfg/

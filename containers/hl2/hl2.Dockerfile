@@ -23,14 +23,21 @@ RUN mv $SOURCEMOD_DIR/plugins/disabled/mapchooser.smx $SOURCEMOD_DIR/plugins/ \
 
 # Add shared plugins
 # Spraytrace
-RUN curl -sL -o $SOURCEMOD_DIR/plugins/spraytrace.smx "http://www.sourcemod.net/vbcompiler.php?file_id=85506"
+RUN mkdir /tmp/plugin \
+    && cd /tmp/plugin \
+    && curl -sL -o plugin.zip "https://forums.alliedmods.net/attachment.php?attachmentid=85509&d=1304342097" \
+    && unzip plugin.zip \
+    && cd $SOURCEMOD_DIR/plugins \
+    && $SOURCEMOD_DIR/scripting/spcomp /tmp/plugin/*.sp \
+    && cp /tmp/plugin/*.phrases.txt $SOURCEMOD_DIR/translations/ \
+    && rm -rf /tmp/plugin
 
 # Overspray plugin
 RUN mkdir /tmp/plugin \
     && cd /tmp/plugin \
     && curl -sL "https://github.com/team-brh/overspray/archive/cc7eefb22b88ae7f70de3e31e2787b58c86a14ae.tar.gz" | tar -xz --strip-components 1 \
     && cd $SOURCEMOD_DIR/plugins \
-    && $SOURCEMOD_DIR/scripting/spcomp /tmp/plugin/overspray.sp \
+    && $SOURCEMOD_DIR/scripting/spcomp /tmp/plugin/*.sp \
     && rm -rf /tmp/plugin
 
 # Sourcemod configs
