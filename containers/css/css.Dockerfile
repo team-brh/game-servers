@@ -46,6 +46,7 @@ ADD --chown=steam config/sourcemod.cfg $STEAM_GAME_DIR/cstrike/cfg/sourcemod/
 ADD --chown=steam config/knifefight.cfg $STEAM_GAME_DIR/cstrike/cfg/sourcemod/
 ADD --chown=steam config/weapon_restrict.cfg $STEAM_GAME_DIR/cstrike/cfg/sourcemod/
 ADD --chown=steam config/plugin.simpletk.cfg $STEAM_GAME_DIR/cstrike/cfg/sourcemod/
+ADD --chown=steam config/mapchooser.cfg $STEAM_GAME_DIR/cstrike/cfg/sourcemod/
 
 
 ENTRYPOINT [ "/steam/steam_entrypoint.sh", "/steam/server_entrypoint.sh" ]

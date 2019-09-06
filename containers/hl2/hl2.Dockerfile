@@ -45,4 +45,3 @@ ADD --chown=steam config/admin_groups.cfg $SOURCEMOD_DIR/configs/
 ADD --chown=steam config/admins_simple.ini $SOURCEMOD_DIR/configs/
 ADD --chown=steam config/core.cfg $SOURCEMOD_DIR/configs/
 ADD --chown=steam config/maplists.cfg $SOURCEMOD_DIR/configs/
-ADD --chown=steam config/mapchooser.cfg $STEAM_GAME_DIR/tf/cfg/sourcemod/

@@ -43,7 +43,6 @@ ADD --chown=steam config/mapcycle.txt $STEAM_GAME_DIR/tf/cfg/
 
 # Sourcemod configs
 ADD --chown=steam config/sourcemod.cfg $STEAM_GAME_DIR/tf/cfg/sourcemod/
-
-
+ADD --chown=steam config/mapchooser.cfg $STEAM_GAME_DIR/tf/cfg/sourcemod/
 
 ENTRYPOINT [ "/steam/steam_entrypoint.sh", "/steam/server_entrypoint.sh" ]
