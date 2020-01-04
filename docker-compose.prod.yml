@@ -1,18 +1,72 @@
 version: "2"
 services:
   tf2:
-    environment: 
-      - IP_ADDRESS=69.162.82.213
     ports:
       - "69.162.82.213:27015:27015/udp"
+    networks:
+      - tf2-network
+      - game-network
+      
   css:
-    environment: 
-      - IP_ADDRESS=69.162.82.211
     ports:
       - "69.162.82.211:27015:27015/udp"
+    networks:
+      - css-network
+      - game-network
 
   pz:
     ports:
       - "69.162.82.210:16261:16261"
       - "69.162.82.210:16261:16261/udp"
       - "69.162.82.210:16262-16286:16262-16286"
+    networks:
+      - pz-network
+      - game-network
+
+  cache:
+    networks: 
+      game-network:
+        ipv4_address: 172.28.0.1
+      external:  
+  dns:
+    networks: 
+      game-network:
+        ipv4_address: 172.28.0.2
+      external:
+
+networks:
+  tf2-network:
+    driver_opts:
+      com.docker.network.bridge.name: bridge-tf2
+      com.docker.network.bridge.enable_ip_masquerade: "false"
+    ipam:
+      config:
+      - subnet: 10.1.0.0/16
+        ip_range: 10.1.1.0/24
+
+  css-network:
+    driver_opts:
+      com.docker.network.bridge.name: bridge-css
+      com.docker.network.bridge.enable_ip_masquerade: "false"
+    ipam:
+      config:
+      - subnet: 10.2.0.0/16
+        ip_range: 10.2.1.0/24
+
+  pz-network:
+    driver_opts:
+      com.docker.network.bridge.name: bridge-pz
+      com.docker.network.bridge.enable_ip_masquerade: "false"
+    ipam:
+      config:
+      - subnet: 10.3.0.0/16
+        ip_range: 10.3.1.0/24
+      
+  game-network:
+    internal: true
+    ipam:
+      config:
+      - subnet: 172.28.0.0/16
+        ip_range: 172.28.5.0/24
+  external:
+    internal: false

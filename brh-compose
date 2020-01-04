@@ -1,0 +1,13 @@
+#!/bin/sh
+
+
+environment="$1"
+shift
+
+if [ "$environment" = "dev" ]; then
+    docker-compose -f ./docker-compose.yml -f ./docker-compose.dev.yml
+elif [ "$environment" = "prod" ]; then
+    docker-compose -f ./docker-compose.yml -f ./docker-compose.prod.yml
+else
+    >&2 echo "Must specify either dev or prod when running"
+fi
