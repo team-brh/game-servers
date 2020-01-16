@@ -55,7 +55,7 @@ services:
   fastdownload:
     image: nginx:1
     ports:
-      - "69.162.82.212:80:80"
+      - "69.162.82.212:38929:80"
     volumes:
       - ./containers/fastdownload/default.conf:/etc/nginx/conf.d/default.conf:ro
       - fast_download:/fastdownload:ro
