@@ -52,11 +52,19 @@ services:
       game-network:
         ipv4_address: 172.28.0.2
 
+  fastdownload:
+    image: nginx:1
+    ports:
+      "69.162.82.212:38929"
+    volumes:
+      - ./containers/fastdownload/default.conf:/etc/nginx/conf.d/default.conf:ro
+      - fast_download:/fastdownload:ro
 
 volumes: 
   cache:
   pz_db:
   pz_save:
+  fast_download:
 
 networks:
   game-network:
