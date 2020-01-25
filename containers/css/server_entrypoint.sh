@@ -8,7 +8,6 @@ touch $STEAM_GAME_DIR/console.log
 $STEAM_GAME_DIR/srcds_run \
     -game cstrike \
     -debug \
-    -steam_dir $STEAMCMD_DIR/ \
     -consolelog $STEAM_GAME_DIR/console.log \
     +ip 0.0.0.0 \
     +sv_pure 1 \
