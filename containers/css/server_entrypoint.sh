@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# copy files into maps file
+cp -r /fastdownload/cstrike $STEAM_GAME_DIR/
+
 touch $STEAM_GAME_DIR/console.log
 
 $STEAM_GAME_DIR/srcds_run \

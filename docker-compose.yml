@@ -19,6 +19,8 @@ services:
     depends_on: 
       - dns
       - cache
+    volumes:
+      - fast_download:/fastdownload:ro
 
   pz:
     image: team-brh/pz:latest
