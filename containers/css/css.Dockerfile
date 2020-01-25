@@ -39,7 +39,7 @@ RUN curl -sL -o $SOURCEMOD_DIR/translations/simpletk.phrases.txt "https://forums
 ADD --chown=steam config/server.cfg $STEAM_GAME_DIR/cstrike/cfg/
 ADD --chown=steam config/motd.txt $STEAM_GAME_DIR/cstrike/cfg/
 ADD --chown=steam config/pure_server_whitelist.txt $STEAM_GAME_DIR/cstrike/cfg/
-ADD --chown=steam config/mapcycle.txt $STEAM_GAME_DIR/tf/cfg/
+ADD --chown=steam config/mapcycle.txt $STEAM_GAME_DIR/cstrike/cfg/
 
 # Sourcemod configs
 ADD --chown=steam config/sourcemod.cfg $STEAM_GAME_DIR/cstrike/cfg/sourcemod/
