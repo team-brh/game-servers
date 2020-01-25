@@ -16,3 +16,6 @@ de_inferno
 cs_assault
 de_nuke
 cs_militia
+cs_italy_tactik3
+cs_officeparty
+de_dustmas2_v2
