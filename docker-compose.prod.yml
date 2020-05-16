@@ -6,7 +6,7 @@ services:
     networks:
       - tf2-network
       - game-network
-      
+
   css:
     ports:
       - "69.162.82.211:27015:27015/udp"
@@ -23,13 +23,20 @@ services:
       - pz-network
       - game-network
 
+  l4d2:
+    ports:
+      - "69.162.82.212:27015:27015/udp"
+    networks:
+      - l4d2-network
+      - game-network
+
   cache:
-    networks: 
+    networks:
       game-network:
         ipv4_address: 172.28.0.1
-      external:  
+      external:
   dns:
-    networks: 
+    networks:
       game-network:
         ipv4_address: 172.28.0.2
       external:
@@ -61,7 +68,16 @@ networks:
       config:
       - subnet: 10.3.0.0/16
         ip_range: 10.3.1.0/24
-      
+
+  l4d2-network:
+    driver_opts:
+      com.docker.network.bridge.name: bridge-l4d2
+      com.docker.network.bridge.enable_ip_masquerade: "false"
+    ipam:
+      config:
+      - subnet: 10.4.0.0/16
+        ip_range: 10.4.1.0/24
+
   game-network:
     internal: true
     ipam:
