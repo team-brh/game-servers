@@ -6,3 +6,4 @@ docker build --rm ./containers/hl2 -t team-brh/hl2:latest -f ./containers/hl2/hl
 docker build --rm ./containers/tf2 -t team-brh/tf2:latest -f ./containers/tf2/tf2.Dockerfile
 docker build --rm ./containers/css -t team-brh/css:latest -f ./containers/css/css.Dockerfile
 docker build --rm ./containers/pz -t team-brh/pz:latest -f ./containers/pz/pz.Dockerfile
+docker build --rm ./containers/l4d2 -t team-brh/l4d2:latest -f ./containers/l4d2/l4d2.Dockerfile
