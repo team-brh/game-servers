@@ -37,6 +37,8 @@ services:
 
   l4d2:
     image: team-brh/l4d2:latest
+    networks:
+      - game-network    
     dns:
       - 172.28.0.2
     depends_on:
