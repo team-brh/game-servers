@@ -2,21 +2,21 @@ version: "2"
 services:
   tf2:
     image: team-brh/tf2:latest
-    dns: 
+    dns:
       - 172.28.0.2
-    networks: 
+    networks:
       - game-network
-    depends_on: 
+    depends_on:
       - dns
       - cache
-  
+
   css:
     image: team-brh/css:latest
-    dns: 
+    dns:
       - 172.28.0.2
-    networks: 
+    networks:
       - game-network
-    depends_on: 
+    depends_on:
       - dns
       - cache
     volumes:
@@ -24,33 +24,45 @@ services:
 
   pz:
     image: team-brh/pz:latest
-    dns: 
+    dns:
       - 172.28.0.2
-    networks: 
+    networks:
       - game-network
-    depends_on: 
+    depends_on:
       - dns
       - cache
     volumes:
       - pz_db:/home/steam/Zomboid/db
       - pz_save:/home/steam/Zomboid/Saves
 
+  l4d2:
+    image: team-brh/l4d2:latest
+    networks:
+      - game-network    
+    dns:
+      - 172.28.0.2
+    depends_on:
+      - dns
+      - cache
+    volumes:
+      - fast_download:/fastdownload:ro
+
   cache:
-    image: steamcache/monolithic
+    image: lancachenet/monolithic
     volumes:
       - cache:/data/cache/
-    networks: 
+    networks:
       game-network:
         ipv4_address: 172.28.0.1
-    depends_on: 
+    depends_on:
       - dns
-        
+
   dns:
-    image: steamcache/steamcache-dns
+    image: lancachenet/lancache-dns
     environment:
-      - USE_GENERIC_CACHE=true 
+      - USE_GENERIC_CACHE=true
       - LANCACHE_IP=172.28.0.1
-    networks: 
+    networks:
       game-network:
         ipv4_address: 172.28.0.2
 
@@ -62,7 +74,7 @@ services:
       - ./containers/fastdownload/default.conf:/etc/nginx/conf.d/default.conf:ro
       - fast_download:/fastdownload:ro
 
-volumes: 
+volumes:
   cache:
   pz_db:
   pz_save:
