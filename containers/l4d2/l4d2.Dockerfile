@@ -4,6 +4,14 @@ FROM team-brh/hl2:latest
 RUN mkdir -p $STEAM_GAME_DIR/left4dead2/ \
     && ln -s /steam/addons $STEAM_GAME_DIR/left4dead2/addons
 
+# Load and build plugin
+RUN mkdir /tmp/plugin \
+	&& cd /tmp/plugin \
+	&& curl -L -o master.zip "https://github.com/lucaspenney/l4d2-versus-plus/archive/master.zip" \
+	&& unzip master.zip \
+	&& cd $SOURCEMOD_DIR/plugins \
+	&& $SOURCEMOD_DIR/scripting/spcomp /tmp/plugin/l4d2-versus-plus-master/l4d2-versus-plus.sp \
+	&& rm -rf /tmp/plugin
 
 ENV STEAM_APP_ID 222860
 
