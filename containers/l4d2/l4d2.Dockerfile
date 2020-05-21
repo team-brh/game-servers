@@ -15,8 +15,11 @@ RUN mkdir /tmp/plugin \
 
 ENV STEAM_APP_ID 222860
 
-# Server.cfg
-ADD --chown=steam cfg/server.cfg $STEAM_GAME_DIR/left4dead2/cfg/
+# server.cfg
+ADD --chown=steam cfg/*.cfg $STEAM_GAME_DIR/left4dead2/cfg/
+# addonconfig.cfg
+ADD --chown=steam cfg/addonconfig.cfg $STEAM_GAME_DIR/
+
 # Sourcemod configs
 ADD --chown=steam cfg/sourcemod/*.cfg $STEAM_GAME_DIR/left4dead2/cfg/sourcemod/
 # Sourcemod stuff
