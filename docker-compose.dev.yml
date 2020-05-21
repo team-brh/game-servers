@@ -20,3 +20,4 @@ services:
       - IP_ADDRESS=0.0.0.0
     ports:
       - "27015:27015/udp"
+      - "27017:27015/udp"
