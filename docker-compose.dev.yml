@@ -1,13 +1,9 @@
 version: "2"
 services:
   tf2:
-    environment:
-      - IP_ADDRESS=0.0.0.0
     ports:
       - "27015:27015/udp"
   css:
-    environment:
-      - IP_ADDRESS=0.0.0.0
     ports:
       - "27016:27015/udp"
   pz:
@@ -16,8 +12,6 @@ services:
       - "16261:16261/udp"
       - "16262-16286:16262-16286"
   l4d2:
-    environment:
-      - IP_ADDRESS=0.0.0.0
     ports:
       - "27015:27015/udp"
       - "27017:27015/udp"
