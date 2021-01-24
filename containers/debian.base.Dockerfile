@@ -50,4 +50,5 @@ ADD steam_app_update.txt /steam/
 
 USER root
 RUN chmod +x /steam/steam_entrypoint.sh
+RUN mkdir /console && chown steam /console
 USER steam

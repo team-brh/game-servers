@@ -22,6 +22,4 @@ $STEAM_GAME_DIR/srcds_run \
     -game left4dead2 \
     +ip 0.0.0.0 \
     +maxplayers 8 \
-    +map c2m1_highway &
-
-tail -F $STEAM_GAME_DIR/console.log
+    +map c2m1_highway

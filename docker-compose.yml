@@ -9,6 +9,10 @@ services:
     depends_on:
       - dns
       - cache
+    volumes:
+      - console:/console
+    environment: 
+      - CONTAINER_NAME=tf2
 
   css:
     image: team-brh/css:latest
@@ -21,6 +25,9 @@ services:
       - cache
     volumes:
       - fast_download:/fastdownload:ro
+      - console:/console
+    environment: 
+      - CONTAINER_NAME=css
 
   pz:
     image: team-brh/pz:latest
@@ -34,6 +41,9 @@ services:
     volumes:
       - pz_db:/home/steam/Zomboid/db
       - pz_save:/home/steam/Zomboid/Saves
+      - console:/console
+    environment: 
+      - CONTAINER_NAME=pz
 
   l4d2:
     image: team-brh/l4d2:latest
@@ -46,6 +56,9 @@ services:
       - cache
     volumes:
       - fast_download:/fastdownload:ro
+      - console:/console
+    environment: 
+      - CONTAINER_NAME=l4d2
 
   cache:
     image: lancachenet/monolithic
@@ -79,6 +92,7 @@ volumes:
   pz_db:
   pz_save:
   fast_download:
+  console:
 
 networks:
   game-network:
