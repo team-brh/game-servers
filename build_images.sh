@@ -7,3 +7,4 @@ docker build --rm ./containers/tf2 -t team-brh/tf2:latest -f ./containers/tf2/tf
 docker build --rm ./containers/css -t team-brh/css:latest -f ./containers/css/css.Dockerfile
 docker build --rm ./containers/pz -t team-brh/pz:latest -f ./containers/pz/pz.Dockerfile
 docker build --rm ./containers/l4d2 -t team-brh/l4d2:latest -f ./containers/l4d2/l4d2.Dockerfile
+docker build --rm ./containers/valheim -t team-brh/valheim:latest -f ./containers/valheim/valheim.Dockerfile

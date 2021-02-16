@@ -59,6 +59,21 @@ services:
       - console:/console
     environment: 
       - CONTAINER_NAME=l4d2
+  
+  valheim:
+    image: team-brh/valheim:latest
+    dns:
+      - 172.28.0.2
+    networks:
+      - game-network
+    depends_on:
+      - dns
+      - cache
+    volumes:
+      - console:/console
+      - valheim_save:/valheim_save/worlds
+    environment: 
+      - CONTAINER_NAME=valheim
 
   cache:
     image: lancachenet/monolithic
@@ -93,6 +108,7 @@ volumes:
   pz_save:
   fast_download:
   console:
+  valheim_save:
 
 networks:
   game-network:
