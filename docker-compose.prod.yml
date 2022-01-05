@@ -37,6 +37,10 @@ services:
     networks:
       - tf2-network
       - game-network
+  
+  fastdownload:
+    ports:
+      - "69.162.82.212:38929:80"
 
   cache:
     networks:
