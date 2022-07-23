@@ -1,4 +1,4 @@
-FROM team-brh/game-server-base:centos
+FROM team-brh/game-server-base:debian
 
 RUN mkdir -p /steam/addons/
 
@@ -6,13 +6,13 @@ ENV SOURCEMOD_DIR /steam/addons/sourcemod
 
 # Copy down Metamod/Sourcemod
 RUN cd /steam/addons/ \
-    && curl -sL "https://mms.alliedmods.net/mmsdrop/1.11/mmsource-1.11.0-git1145-linux.tar.gz" | tar -xz addons --strip-components 1 \
-    && curl -sL "https://sm.alliedmods.net/smdrop/1.10/sourcemod-1.10.0-git6528-linux.tar.gz" | tar -xz addons --strip-components 1 \
+    && curl -sL "https://mms.alliedmods.net/mmsdrop/1.11/mmsource-1.11.0-git1148-linux.tar.gz" | tar -xz addons --strip-components 1 \
+    && curl -sL "https://sm.alliedmods.net/smdrop/1.11/sourcemod-1.11.0-git6906-linux.tar.gz" | tar -xz addons --strip-components 1 \
     # Metamod added support for 64bit servers, but will break 32bit servers if metamod_x64.vdf is in the addons folder
     && rm /steam/addons/metamod_x64.vdf
 
 # Grab accelerator (crash dump analyzer)
-RUN curl -sL -o /tmp/accelerator.zip https://builds.limetech.io/files/accelerator-2.4.3-git127-b302f00-linux.zip  \
+RUN curl -sL -o /tmp/accelerator.zip https://builds.limetech.io/files/accelerator-2.5.0-git138-cd575aa-linux.zip  \
     && unzip -qq /tmp/accelerator.zip -d /steam/ \
     && rm /tmp/accelerator.zip
 

@@ -2,6 +2,7 @@ version: "2"
 services:
   tf2:
     ports:
+      - "27015:27015"
       - "27015:27015/udp"
   css:
     ports:
@@ -13,7 +14,7 @@ services:
       - "16262-16286:16262-16286"
   l4d2:
     ports:
-      - "27015:27015/udp"
+      - "27018:27015/udp"
       - "27017:27015/udp"
   valheim:
     ports:

@@ -4,16 +4,20 @@ FROM team-brh/hl2:latest
 RUN mkdir -p $STEAM_GAME_DIR/tf/ \
     && ln -s /steam/addons $STEAM_GAME_DIR/tf/addons
 
+# Add sm-json (DG dependency)
+RUN mkdir /tmp/plugin \
+    && cd /tmp/plugin \
+    && curl -sL "https://github.com/clugg/sm-json/archive/refs/tags/v4.1.1.tar.gz" | tar -xz --strip-components 1 \
+    && cp -R addons/sourcemod/* $SOURCEMOD_DIR/ \
+    && rm -rf /tmp/plugin
+
 # Load and build the dg plugin
-# RUN mkdir /tmp/plugin \
-#     && cd /tmp/plugin \
-#     && curl -sL "https://github.com/jesseryoung/drinkinggame/archive/9751c3b41f66a75cb731787dc03e82ee5043fa7a.tar.gz" | tar -xz --strip-components 1 \
-#     && mkdir -p $STEAM_GAME_DIR/tf/materials/dg/ \
-#     && cp *.vmt $STEAM_GAME_DIR/tf/materials/dg/ \
-#     && cp *.vtf $STEAM_GAME_DIR/tf/materials/dg/ \
-#     && cd $SOURCEMOD_DIR/plugins \
-#     && $SOURCEMOD_DIR/scripting/spcomp /tmp/plugin/src/dgplugin.sp \
-#     && rm -rf /tmp/plugin
+RUN mkdir /tmp/plugin \
+    && cd /tmp/plugin \
+    && curl -sL "https://github.com/jesseryoung/drinkinggame/archive/527ad642cb9e6bcbc39a9566e08319407da492cb.tar.gz" | tar -xz --strip-components 1 \
+    && cd $SOURCEMOD_DIR/plugins \
+    && $SOURCEMOD_DIR/scripting/spcomp /tmp/plugin/src/dgplugin.sp \
+    && rm -rf /tmp/plugin
 
 # Heavyboxing plugin
 RUN mkdir /tmp/plugin \
