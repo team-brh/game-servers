@@ -4,14 +4,14 @@ RUN dpkg --add-architecture i386 \
     && apt-get update \
     && apt-get install -y --no-install-recommends --no-install-suggests  \
         ca-certificates=20210119 \
-        curl=7.74.0-1.3+deb11u1 \
+        curl=7.74.0-1.3+deb11u2 \ 
         gdb=10.1-1.7 \
         gettext-base=0.21-4 \
         lib32gcc-s1=10.2.1-6 \
         lib32stdc++6=10.2.1-6 \
         lib32z1=1:1.2.11.dfsg-2+deb11u1 \
         libbz2-1.0:i386=1.0.8-4 \
-        libcurl3-gnutls:i386=7.74.0-1.3+deb11u1 \
+        libcurl3-gnutls:i386=7.74.0-1.3+deb11u2 \
         libncurses5:i386=6.2+20201114-2 \
         libtinfo5:i386=6.2+20201114-2 \
         locales=2.31-13+deb11u3 \
