@@ -34,7 +34,6 @@ ctf_gorge
 ctf_hellfire
 ctf_landfall
 ctf_sawmill
-ctf_thundermountain
 ctf_turbine
 ctf_well
 koth_badlands
@@ -59,12 +58,14 @@ pl_cactuscanyon
 pl_frontier_final
 pl_goldrush
 pl_hoodoo_final
+pl_snowycoast
+pl_thundermountain
 // pl_millstone_event
 plr_hightower
 // plr_hightower_event
 plr_nightfall_final
 plr_pipeline
-pl_snowycoast
+tc_hydro
 
 // ##### Custom maps - Workshop only! ######
 // Entries follow the pattern "workshop/map_name.ugc<file id>"
