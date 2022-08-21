@@ -14,7 +14,7 @@ RUN mkdir /tmp/plugin \
 # Load and build the dg plugin
 RUN mkdir /tmp/plugin \
     && cd /tmp/plugin \
-    && curl -sL "https://github.com/jesseryoung/drinkinggame/archive/a9b72a557177d164ec9a8138cd7738224d770a22.tar.gz" | tar -xz --strip-components 1 \
+    && curl -sL "https://github.com/jesseryoung/drinkinggame/archive/b6f196222c50b532937aaf6bf8b340ef84d862a3.tar.gz" | tar -xz --strip-components 1 \
     && cd $SOURCEMOD_DIR/plugins \
     && $SOURCEMOD_DIR/scripting/spcomp /tmp/plugin/src/dgplugin.sp \
     && rm -rf /tmp/plugin
