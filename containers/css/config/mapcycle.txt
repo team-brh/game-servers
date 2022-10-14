@@ -1,3 +1,4 @@
+aim_deagle_disco
 cs_assault
 cs_china_v2
 cs_compound
