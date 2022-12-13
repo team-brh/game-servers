@@ -14,3 +14,4 @@ docker build --rm ./containers/pz -t team-brh/pz:latest -f ./containers/pz/pz.Do
 # Build failing right now
 # docker build --rm ./containers/l4d2 -t team-brh/l4d2:latest -f ./containers/l4d2/l4d2.Dockerfile
 docker build --rm ./containers/valheim -t team-brh/valheim:latest -f ./containers/valheim/valheim.Dockerfile
+docker build --rm ./containers/factorio -t team-brh/factorio:latest -f ./containers/factorio/factorio.Dockerfile

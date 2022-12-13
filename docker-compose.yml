@@ -74,7 +74,14 @@ services:
       - valheim_save:/valheim_save/worlds
     environment: 
       - CONTAINER_NAME=valheim
-
+  
+  factorio:
+    image: team-brh/factorio:latest
+    ports:
+     - "34197:34197/udp"
+    volumes:
+     - factorio_save:/factorio/saves
+     - factorio_mod:/factorio/mods
   cache:
     image: lancachenet/monolithic
     volumes:
@@ -107,6 +114,8 @@ volumes:
   fast_download:
   console:
   valheim_save:
+  factorio_save:
+  factorio_mod:
 
 networks:
   game-network:
