@@ -38,6 +38,14 @@ services:
       - tf2-network
       - game-network
   
+  palworld:
+    ports:
+      - 69.162.82.213:8211:8211/udp
+      - 69.162.82.213:27015:27015/udp
+    networks:
+      - palworld-network
+      - game-network
+  
   fastdownload:
     ports:
       - "69.162.82.212:38929:80"
@@ -52,7 +60,7 @@ services:
       game-network:
         ipv4_address: 172.28.0.2
       external:
-
+  
 networks:
   tf2-network:
     driver_opts:
@@ -89,6 +97,15 @@ networks:
       config:
       - subnet: 10.4.0.0/16
         ip_range: 10.4.1.0/24
+  
+  palworld-network:
+    driver_opts:
+      com.docker.network.bridge.name: bridge-palworld
+      com.docker.network.bridge.enable_ip_masquerade: "false"
+    ipam:
+      config:
+      - subnet: 10.5.0.0/16
+        ip_range: 10.5.1.0/24
 
   game-network:
     internal: true

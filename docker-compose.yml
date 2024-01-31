@@ -82,6 +82,23 @@ services:
     volumes:
      - factorio_save:/factorio/saves
      - factorio_mod:/factorio/mods
+
+  palworld:
+    image: thijsvanloef/palworld-server-docker:latest
+    restart: unless-stopped
+    stop_grace_period: 30s # Set to however long you are willing to wait for the container to gracefully stop
+    env_file:
+        -  ./containers/palworld/.env
+    volumes:
+        - palworld:/palworld/
+    dns:
+      - 172.28.0.2
+    networks:
+      - game-network
+    depends_on:
+      - dns
+      - cache
+  
   cache:
     image: lancachenet/monolithic
     volumes:
@@ -116,6 +133,7 @@ volumes:
   valheim_save:
   factorio_save:
   factorio_mod:
+  palworld:
 
 networks:
   game-network:
