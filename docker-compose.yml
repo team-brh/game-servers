@@ -91,6 +91,7 @@ services:
         -  ./containers/palworld/.env
     volumes:
         - palworld:/palworld/
+        - ./containers/palworld/AllTheBases_P.pak:/palworld/Pal/Content/Paks/AllTheBases_P.pak:ro
     dns:
       - 172.28.0.2
     networks:
