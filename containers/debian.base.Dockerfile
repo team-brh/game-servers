@@ -1,8 +1,8 @@
-FROM debian:bullseye-slim
+FROM debian:bookworm-slim
 
 RUN dpkg --add-architecture i386 \
     && apt-get update \
-    && apt-get install -y --no-install-recommends --no-install-suggests  \
+    && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends --no-install-suggests  \
         ca-certificates \
         curl \
         gdb \

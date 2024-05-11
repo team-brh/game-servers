@@ -6,7 +6,7 @@ ENV SOURCEMOD_DIR /steam/addons/sourcemod
 
 # Copy down Metamod/Sourcemod
 RUN cd /steam/addons/ \
-    && curl -sL "https://mms.alliedmods.net/mmsdrop/1.11/mmsource-1.11.0-git1148-linux.tar.gz" | tar -xz addons --strip-components 1 \
+    && curl -sL "https://mms.alliedmods.net/mmsdrop/1.11/mmsource-1.11.0-git1153-linux.tar.gz" | tar -xz addons --strip-components 1 \
     && curl -sL "https://sm.alliedmods.net/smdrop/1.11/sourcemod-1.11.0-git6926-linux.tar.gz" | tar -xz addons --strip-components 1 \
     # Metamod added support for 64bit servers, but will break 32bit servers if metamod_x64.vdf is in the addons folder
     && rm /steam/addons/metamod_x64.vdf
