@@ -6,5 +6,5 @@ $STEAM_GAME_DIR/srcds_run \
     +ip 0.0.0.0 \
     +sv_pure 1 \
     +mapcyclefile mapcycle.txt \
-    +map koth_viaduct_event \
+    +map koth_nucleus \
     +maxplayers 32
