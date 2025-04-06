@@ -22,7 +22,7 @@ RUN mkdir /tmp/plugin \
 # Heavyboxing plugin
 RUN mkdir /tmp/plugin \
     && cd /tmp/plugin \
-    && curl -sL "https://github.com/jesseryoung/HeavyBoxing/archive/97788a637d5fc6ae80f5fc8e91e9b767b980b938.tar.gz" | tar -xz --strip-components 1 \
+    && curl -sL "https://github.com/jesseryoung/HeavyBoxing/archive/edb999d5cf4cb96d74b289880c422d3866069100.tar.gz" | tar -xz --strip-components 1 \
     && mkdir -p $STEAM_GAME_DIR/tf/sound/suddendeath/ \
     && cp hbm.mp3 $STEAM_GAME_DIR/tf/sound/suddendeath/ \
     && cd $SOURCEMOD_DIR/plugins \
