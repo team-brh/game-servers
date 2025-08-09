@@ -7,7 +7,7 @@ RUN mkdir -p $STEAM_GAME_DIR/tf/ \
 # Add sm-json (DG dependency)
 RUN mkdir /tmp/plugin \
     && cd /tmp/plugin \
-    && curl -sL "https://github.com/clugg/sm-json/archive/refs/tags/v4.1.1.tar.gz" | tar -xz --strip-components 1 \
+    && curl -sL "https://github.com/clugg/sm-json/archive/refs/tags/v5.0.1.tar.gz" | tar -xz --strip-components 1 \
     && cp -R addons/sourcemod/* $SOURCEMOD_DIR/ \
     && rm -rf /tmp/plugin
 
