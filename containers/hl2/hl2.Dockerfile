@@ -24,15 +24,16 @@ RUN mv $SOURCEMOD_DIR/plugins/disabled/mapchooser.smx $SOURCEMOD_DIR/plugins/ \
     && mv $SOURCEMOD_DIR/plugins/disabled/nominations.smx $SOURCEMOD_DIR/plugins/
 
 # Add shared plugins
+# Download broken, fix later
 # Spraytrace
-RUN mkdir /tmp/plugin \
-    && cd /tmp/plugin \
-    && curl -sL -o plugin.zip "https://forums.alliedmods.net/attachment.php?attachmentid=85509&d=1304342097" \
-    && unzip plugin.zip \
-    && cd $SOURCEMOD_DIR/plugins \
-    && $SOURCEMOD_DIR/scripting/spcomp /tmp/plugin/*.sp \
-    && cp /tmp/plugin/*.phrases.txt $SOURCEMOD_DIR/translations/ \
-    && rm -rf /tmp/plugin
+# RUN mkdir /tmp/plugin \
+#    && cd /tmp/plugin \
+#    && curl -sL -o plugin.zip "https://forums.alliedmods.net/attachment.php?attachmentid=85509&d=1304342097" \
+#    && unzip plugin.zip \
+#    && cd $SOURCEMOD_DIR/plugins \
+#    && $SOURCEMOD_DIR/scripting/spcomp /tmp/plugin/*.sp \
+#    && cp /tmp/plugin/*.phrases.txt $SOURCEMOD_DIR/translations/ \
+#    && rm -rf /tmp/plugin
 
 # Overspray plugin
 RUN mkdir /tmp/plugin \
@@ -46,4 +47,5 @@ RUN mkdir /tmp/plugin \
 ADD --chown=steam config/admin_groups.cfg $SOURCEMOD_DIR/configs/
 ADD --chown=steam config/admins_simple.ini $SOURCEMOD_DIR/configs/
 ADD --chown=steam config/core.cfg $SOURCEMOD_DIR/configs/
+
 ADD --chown=steam config/maplists.cfg $SOURCEMOD_DIR/configs/
