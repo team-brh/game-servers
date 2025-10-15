@@ -13,26 +13,20 @@ RUN chmod +x /steam/server_entrypoint.sh
 USER steam
 
 # Knife fight plugin
-RUN curl -sL -o /tmp/plugin.zip "https://forums.alliedmods.net/attachment.php?attachmentid=32686&d=1224250281"  \
-    && unzip -qq /tmp/plugin.zip -d $STEAM_GAME_DIR/cstrike \
-    && rm /tmp/plugin.zip
-
+ADD --chown=steam plugins/knifefight.tar $SOURCEMOD_DIR
 
 # Weapon restrict
-RUN curl -sL -o /tmp/plugin.zip "https://forums.alliedmods.net/attachment.php?attachmentid=162251&d=1492626443"  \
-    && unzip -qq /tmp/plugin.zip -d /tmp/ \
-    && cp -R /tmp/weapon-restrict/addons/* $STEAM_GAME_DIR/cstrike/addons/ \
-    && rm /tmp/plugin.zip \
-    && rm -rf /tmp/weapon-restrict
+ADD --chown=steam plugins/weapon-restrict.tar $SOURCEMOD_DIR
 
 # Extra Cash
 RUN curl -sL -o $SOURCEMOD_DIR/plugins/extra_cash.smx "http://www.sourcemod.net/vbcompiler.php?file_id=18836"
 # Quick Defuse
 RUN curl -sL -o $SOURCEMOD_DIR/plugins/QuickDefuse.smx "http://www.sourcemod.net/vbcompiler.php?file_id=19309"
-# simpletk
-RUN curl -sL -o $SOURCEMOD_DIR/plugins/simpletk.smx "http://www.sourcemod.net/vbcompiler.php?file_id=86692"
-RUN curl -sL -o $SOURCEMOD_DIR/translations/simpletk.phrases.txt "https://forums.alliedmods.net/attachment.php?attachmentid=86654&d=1306426815"
 
+# simpletk
+ADD --chown=steam plugins/simpletk.tar $SOURCEMOD_DIR
+RUN cd $SOURCEMOD_DIR/plugins \
+   && $SOURCEMOD_DIR/scripting/spcomp $SOURCEMOD_DIR/scripting/simpletk.sp
 
 
 # General game configs

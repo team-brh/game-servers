@@ -24,16 +24,10 @@ RUN mv $SOURCEMOD_DIR/plugins/disabled/mapchooser.smx $SOURCEMOD_DIR/plugins/ \
     && mv $SOURCEMOD_DIR/plugins/disabled/nominations.smx $SOURCEMOD_DIR/plugins/
 
 # Add shared plugins
-# Download broken, fix later
 # Spraytrace
-# RUN mkdir /tmp/plugin \
-#    && cd /tmp/plugin \
-#    && curl -sL -o plugin.zip "https://forums.alliedmods.net/attachment.php?attachmentid=85509&d=1304342097" \
-#    && unzip plugin.zip \
-#    && cd $SOURCEMOD_DIR/plugins \
-#    && $SOURCEMOD_DIR/scripting/spcomp /tmp/plugin/*.sp \
-#    && cp /tmp/plugin/*.phrases.txt $SOURCEMOD_DIR/translations/ \
-#    && rm -rf /tmp/plugin
+ADD --chown=steam plugins/spraytrace.tar $SOURCEMOD_DIR
+RUN cd $SOURCEMOD_DIR/plugins \
+   && $SOURCEMOD_DIR/scripting/spcomp $SOURCEMOD_DIR/scripting/spraytrace.sp
 
 # Overspray plugin
 RUN mkdir /tmp/plugin \
