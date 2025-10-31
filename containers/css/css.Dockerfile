@@ -13,10 +13,10 @@ RUN chmod +x /steam/server_entrypoint.sh
 USER steam
 
 # Knife fight plugin
-ADD --chown=steam plugins/knifefight.tar $SOURCEMOD_DIR
+ADD --chown=steam plugins/knifefight.tar $STEAM_GAME_DIR/cstrike
 
 # Weapon restrict
-ADD --chown=steam plugins/weapon-restrict.tar $SOURCEMOD_DIR
+ADD --chown=steam plugins/weapon-restrict.tar $STEAM_GAME_DIR/cstrike
 
 # Extra Cash
 RUN curl -sL -o $SOURCEMOD_DIR/plugins/extra_cash.smx "http://www.sourcemod.net/vbcompiler.php?file_id=18836"
