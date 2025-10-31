@@ -27,7 +27,6 @@ koth_synthetic_event​
 koth_toxic​
 koth_undergrove_event​
 koth_viaduct_event​
-mvm_ghost_town​
 pd_circus​
 pd_cursed_cove_event​
 pd_farmageddon​
