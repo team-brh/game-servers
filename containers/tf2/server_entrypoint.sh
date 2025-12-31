@@ -5,6 +5,6 @@ $STEAM_GAME_DIR/srcds_run \
     -debug \
     +ip 0.0.0.0 \
     +sv_pure 1 \
-    +mapcyclefile mapcycle.halloween.txt \
-    +map koth_dusker \
+    +mapcyclefile mapcycle.txt \
+    +map koth_nucleus \
     +maxplayers 32
