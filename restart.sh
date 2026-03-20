@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # Cron-friendly scheduled restart for game servers.
 # Brings all services down (cleans up logs), reapplies networking, starts core servers.
 #
