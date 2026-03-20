@@ -14,7 +14,7 @@ LOGFILE="$SCRIPT_DIR/restart.log"
 
 if [ "${1:-}" = "--install-cron" ]; then
     CRON_LINE="0 4 * * * $SCRIPT_DIR/restart.sh"
-    (crontab -l 2>/dev/null | grep -v "$SCRIPT_DIR/restart.sh"; echo "$CRON_LINE") | crontab -
+    (crontab -l 2>/dev/null | grep -v "$SCRIPT_DIR/restart.sh" || true; echo "$CRON_LINE") | crontab -
     echo "Cron job installed: $CRON_LINE"
     exit 0
 fi
